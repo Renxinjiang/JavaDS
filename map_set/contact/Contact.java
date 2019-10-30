@@ -1,6 +1,8 @@
 package map_set.contact;
 
+import javax.naming.NameNotFoundException;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.TreeMap;
 
 /**
@@ -25,4 +27,28 @@ public class Contact {
         }
         map.put(name,user);
     }
+    //查找联系人
+    public void search(String name,Contact contact){
+        if (map.containsKey(name)){
+            System.out.println("姓名：：" + map.get(name).name);
+            System.out.println("手机号：" + map.get(name).mobilePhone);
+            System.out.println("办公室电话：" + map.get(name).officePhone);
+        }else {
+            System.out.println("您输入的联系人不存在");
+        }
+    }
+
+    //删除联系人
+    public void remove(String name) throws NameNotFoundException {
+        if (!map.containsKey(name)){
+            throw new NameNotFoundException();
+        }
+        map.remove(name);
+    }
+
+    public User get(String name) {
+        return map.get(name);
+    }
+
+
 }
